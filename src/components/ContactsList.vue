@@ -1,22 +1,22 @@
 <template>
   <div>
-  <table>
+      <table>
     
-    <thead>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
+        <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
     </thead>
-    <tbody>
-    <tr v-for="(contact, key) in contacts" :key="key">
-        <td>{{ contact.firstName}}</td>
-        <td>{{ contact.lastName}}</td>
+        <tbody>
+      <tr v-for="(contact, key) in contacts" :key="key" v-if="contact.firstName === 'John'">
+          <td>{{ contact.firstName}}</td>
+          <td>{{ contact.lastName}}</td>
           <td>{{ contact.email}}</td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
-    </template>
+      </tr>
+        </tbody>
+      </table>
+  </div>
+</template>
  
 
 <script>
