@@ -1,5 +1,23 @@
 <template>
   <div>
+
+    <form @submit.prevent="addContact">
+        <label>First Name</label>
+        <input v-model="newContact.firstName" type="text" placeholder="First Name"/>
+
+        <label>Last Name</label>
+        <input v-model="newContact.lastName" type="text" placeholder="Last Name"/>
+
+        <label>Email</label>
+        <input v-model="newContact.email" type="email" placeholder="Email"/>
+
+        <button type="submit">Add Contact</button>
+
+    </form>
+
+    
+
+
       <table>
     
         <thead>
@@ -8,7 +26,7 @@
             <th>Email</th>
     </thead>
         <tbody>
-      <tr v-for="(contact, key) in contacts" :key="key" v-if="contact.firstName === 'John'">
+      <tr v-for="(contact, key) in contacts" :key="key">
           <td>{{ contact.firstName}}</td>
           <td>{{ contact.lastName}}</td>
           <td>{{ contact.email}}</td>
@@ -28,7 +46,18 @@ export default {
         {firstName: 'John', lastName: 'Doe', email: 'john@doe.com'},
         {firstName: 'Mike', lastName: 'Dane', email: 'mike@dane.com'},
         {firstName: 'Steve', lastName: 'Kolin', email: 'steve@kolin.com'}
-      ]
+      ],
+
+      newContact: {
+        firstName: '',
+        lastName: '',
+        email: ''
+      }
+    }
+  },
+  methods: {
+    addContact() {
+      this.contacts.push(this.newContact)
     }
   }
 }
